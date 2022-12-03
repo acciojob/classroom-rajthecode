@@ -82,6 +82,10 @@ import java.util.*;
                 for(String student: teacherStudentMapping.get(teacher)){
                     studentsSet.add(student);
                 }
+                if(teacherMap.containsKey(teacher)){
+                    teacherMap.remove(teacher);
+                }
+                teacherStudentMapping.remove(teacher);
             }
 
             for(String student: studentsSet){
@@ -89,6 +93,7 @@ import java.util.*;
                     studentMap.remove(student);
                 }
             }
+
         }
     }
 

@@ -44,28 +44,25 @@ public class StudentController {
     public ResponseEntity<Student> getStudentByName(@PathVariable String name){
         Student student = null; // Assign student by calling service layer method
         studentService.getStudentByName(name);
-        return new ResponseEntity<>(null, HttpStatus.CREATED);
+        return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
 
     @GetMapping("/get-teacher-by-name/{name}")
     public ResponseEntity<Teacher> getTeacherByName(@PathVariable String name){
-        Teacher teacher = null; // Assign student by calling service layer method
-        studentService.getTeacherByName(name);
-        return new ResponseEntity<>(null, HttpStatus.CREATED);
+        Teacher teacher = studentService.getTeacherByName(name);
+        return new ResponseEntity<>(teacher, HttpStatus.CREATED);
     }
 
     @GetMapping("/get-students-by-teacher-name/{teacher}")
     public ResponseEntity<List<String>> getStudentsByTeacherName(@PathVariable String teacher){
-        List<String> students = null; // Assign list of student by calling service layer method
-        studentService.getStudentsByTeacherName(teacher);
-        return new ResponseEntity<>(null, HttpStatus.CREATED);
+        List<String> students = studentService.getStudentsByTeacherName(teacher);
+        return new ResponseEntity<>(students, HttpStatus.CREATED);
     }
 
     @GetMapping("/get-all-students")
     public ResponseEntity<List<String>> getAllStudents(){
-        List<String> students = null; // Assign list of student by calling service layer method
-      studentService.getAllStudents();
-        return new ResponseEntity<>(null, HttpStatus.CREATED);
+        List<String> students = studentService.getAllStudents();
+        return new ResponseEntity<>(students, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete-teacher-by-name")
